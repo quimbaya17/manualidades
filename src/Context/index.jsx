@@ -1,4 +1,5 @@
 import { createContext, useState,  } from "react";
+import Layout from "../Components/Layout";
 
 export const CartContext = createContext();
 
@@ -26,6 +27,7 @@ export const CartContextProvider = ({ children }) => {
 
     
     return( 
+        <Layout>
         <CartContext.Provider value = {{
             count,
             setCount,
@@ -43,5 +45,6 @@ export const CartContextProvider = ({ children }) => {
         >
             {children}
         </CartContext.Provider>
+        </Layout>
     )
 }

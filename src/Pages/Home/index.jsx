@@ -1,38 +1,36 @@
-import React from 'react'
-import {useState,useEffect } from 'react'
-import Layout from '../../Components/Layout'
-import Card from '../../Components/Card'
-import ProductDetail  from '../../Components/ProductDetail'
+
+import { useState, useEffect } from 'react';
+import Layout from '../../Components/Layout';
+import Card from '../../Components/Card';
+import ProductDetail from '../../Components/ProductDetail';
 
 function Home() {
+  const [items, setItems] = useState(null);
 
-  const [items, setItems] = useState(null)
   useEffect(() => {
-    // https://fakeapi.platzi.com/
-    fetch('https://api.escuelajs.co/api/v1/products')
-    // fetch('https://jsonplaceholder.typicode.com/photos')
-    .then(response => response.json())
-    .then(data => console.log(setItems(data)) )
+    fetch('https://kaoxdc.pythonanywhere.com/api/manualidad/')
+      .then((response) => response.json())
+      .then((data) => setItems(data));
+  }, []);
 
-  }, [])
-  
   return (
     <>
       <Layout>
-        Home
+        <h1 className="text-4xl font-bold text-cyan-900 mb-6">
+          Manualidades a tu Gusto
+        </h1>
 
-        <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
-            {
-                items?.map(item => (
-                    <Card key={item.id} data = {item}/>
-                ))
-            }
-
+        <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+          {items?.map((item) => (
+            <Card key={item.id} data={item} />
+          ))}
         </div>
-        <ProductDetail/>
+
+        <ProductDetail />
       </Layout>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
+

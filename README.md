@@ -9,3 +9,4 @@ Currently, two official plugins are available:
 
 
 npm run build  => para crear proyecto en una sola carpeta
+git remote remove origin  para remover el repositorio
